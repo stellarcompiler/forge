@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import ValidationScore from "../components/ValidationScore";
 import ValidationReport from "../components/ValidationReport";
 
 export default function IdeaValidationPage() {
   const { projectId } = useParams(); // Prepares engine for true database id linking
-
+  const navigate = useNavigate();
+  
   const [project] = useState({
     id: projectId || 1,
     title: "Smart Campus Optimizer",
@@ -79,16 +80,28 @@ export default function IdeaValidationPage() {
 
       {/* Structured Output Presentation Sheet using Clean Components */}
       {validationResult && (
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 animate-fade-in">
-          <ValidationScore 
-            score={validationResult.score} 
-            feasibility={validationResult.feasibility} 
-          />
-          <div className="md:col-span-2">
-            <ValidationReport 
-              critique={validationResult.critique} 
-              recommendations={validationResult.recommendations} 
+        <div className="space-y-6 animate-fade-in">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <ValidationScore 
+              score={validationResult.score} 
+              feasibility={validationResult.feasibility} 
             />
+            <div className="md:col-span-2">
+              <ValidationReport 
+                critique={validationResult.critique} 
+                recommendations={validationResult.recommendations} 
+              />
+            </div>
+          </div>
+
+          {/* NEW STEP INTEGRATION: Flow Sequence Footer */}
+          <div className="flex items-center justify-end pt-4 border-t border-[#1c1c1c]">
+            <button
+              onClick={() => navigate(`/team-analysis/${project.id}`)}
+              className="px-6 py-2.5 text-xs font-mono font-semibold bg-[#D97706] text-black rounded hover:bg-[#b56205] transition-all shadow-lg shadow-amber-500/5 flex items-center gap-2"
+            >
+              Proceed to Team Role Allocation →
+            </button>
           </div>
         </div>
       )}

@@ -4,7 +4,6 @@ openTasksCount,
 }) {
 return ( <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
 
-```
   {/* Active Projects */}
   <div className="p-5 bg-[#111111] border border-[#232323] rounded-lg">
     <div className="text-xs text-zinc-500 font-mono uppercase tracking-wider">

@@ -75,7 +75,7 @@ function RouteManager() {
           </RequireAuth>
         } />
         
-        <Route path="/team-analysis" element={
+        <Route path="/team-analysis/:projectId" element={
           <RequireAuth>
             <DashboardLayout><TeamAnalysisPage /></DashboardLayout>
           </RequireAuth>

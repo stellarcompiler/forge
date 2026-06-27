@@ -31,7 +31,6 @@ return ( <div className="space-y-8">
 {/* Dashboard Header */} <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 pb-4 border-b border-[#232323]"> <div> <h1 className="text-3xl font-bold tracking-tight bg-gradient-to-r from-white via-zinc-200 to-zinc-500 bg-clip-text text-transparent">
 Forge Workspace </h1>
 
-```
       <p className="text-sm text-zinc-400 mt-1">
         Track project progress, manage tasks, and keep your team aligned.
       </p>

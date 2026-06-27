@@ -7,7 +7,6 @@ return ( <div className="space-y-4">
 {/* Project Header */} <div className="flex items-start justify-between"> <div> <span className="px-2 py-0.5 text-[10px] font-mono rounded bg-amber-500/10 text-[#D97706] border border-amber-500/20">
 {project.status} </span>
 
-```
           <h3 className="text-xl font-bold mt-2 text-zinc-100">
             {project.title}
           </h3>

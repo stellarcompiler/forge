@@ -34,7 +34,7 @@ export default function DashboardLayout({ children }) {
              <NavLink to="/validation/1" className={getNavLinkClass}>
               Idea Validation
             </NavLink>
-            <NavLink to="/team-analysis" className={getNavLinkClass}>
+            <NavLink to="/team-analysis/1" className={getNavLinkClass}>
               Team Analysis
             </NavLink>
             <NavLink to="/tasks" className={getNavLinkClass}>
