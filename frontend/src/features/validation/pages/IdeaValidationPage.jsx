@@ -63,7 +63,7 @@ export default function IdeaValidationPage() {
             onClick={triggerLlamaValidation}
             className="w-full py-3 bg-[#D97706] text-black font-semibold font-mono text-xs rounded-md hover:bg-[#b56205] transition-all flex items-center justify-center gap-2"
           >
-            Execute Llama 3 Feasibility Check →
+            Execute Gemini AI Feasibility Check →
           </button>
         )}
       </div>
@@ -73,7 +73,7 @@ export default function IdeaValidationPage() {
         <div className="p-8 border border-dashed border-amber-500/20 bg-amber-500/[0.02] rounded-xl text-center space-y-3">
           <div className="w-6 h-6 border-2 border-[#D97706] border-t-transparent rounded-full animate-spin mx-auto" />
           <p className="text-xs font-mono text-amber-500 animate-pulse">
-            Parsing textual tokens... Streaming weights evaluation through Groq API engine...
+            Parsing textual tokens... Streaming weights evaluation through Gemini API engine...
           </p>
         </div>
       )}

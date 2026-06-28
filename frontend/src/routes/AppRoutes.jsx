@@ -15,6 +15,7 @@ import CreateProjectPage from "../features/projects/pages/CreateProjectPage";
 import ProjectDetailsPage from "../features/projects/pages/ProjectDetailsPage";
 import Signup from "../pages/Signup";
 import IdeaValidationPage from "../features/validation/pages/IdeaValidationPage";
+import PresentationPage from "../features/presentation/pages/PresentationPage";
 
 function RouteManager() {
   const navigate = useNavigate();
@@ -122,6 +123,12 @@ function RouteManager() {
         <Route path="/validation/:projectId" element={
           <RequireAuth>
             <DashboardLayout><IdeaValidationPage /></DashboardLayout>
+          </RequireAuth>
+        } />
+
+        <Route path="/presentation" element={
+          <RequireAuth>
+            <DashboardLayout><PresentationPage /></DashboardLayout>
           </RequireAuth>
         } />
         

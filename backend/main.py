@@ -15,6 +15,7 @@ from backend.config.settings import settings
 from backend.database.db_init import initialize_database
 
 from backend.api.project_routes import router as project_router
+from backend.api.presentation_routes import router as presentation_router
 from backend.api.users_route import router as users_router
 # from backend.api.team_routes import router as team_router
 # from backend.api.task_routes import router as task_router
@@ -42,6 +43,7 @@ app.add_middleware(
 )
 
 app.include_router(project_router)
+app.include_router(presentation_router)
 app.include_router(users_router)
 # app.include_router(team_router)
 # app.include_router(task_router)
