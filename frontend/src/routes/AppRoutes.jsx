@@ -13,6 +13,7 @@ import TeamAnalysisPage from "../features/team-analysis/pages/TeamAnalysisPage";
 import AIReportsPage from "../features/ai-reports/pages/AIReportsPage";
 import CreateProjectPage from "../features/projects/pages/CreateProjectPage";
 import ProjectDetailsPage from "../features/projects/pages/ProjectDetailsPage";
+import Signup from "../pages/Signup";
 import IdeaValidationPage from "../features/validation/pages/IdeaValidationPage";
 
 function RouteManager() {
@@ -63,6 +64,14 @@ function RouteManager() {
             </DashboardLayout>
           </RequireAuth>
         } />
+        <Route
+  path="/signup"
+  element={
+    <RejectAuth>
+      <Signup />
+    </RejectAuth>
+  }
+/>
         <Route
   path="/projects/:projectId"
   element={

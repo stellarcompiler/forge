@@ -1,11 +1,10 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";
 
-export default function Login() {
+export default function Signup() {
   const navigate = useNavigate();
-  const { login } = useAuth();
 
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -30,13 +29,14 @@ export default function Login() {
 
     try {
       const response = await fetch(
-        "http://localhost:8000/users/login",
+        "http://localhost:8000/users/signup",
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
+            name,
             email,
             password,
           }),
@@ -47,13 +47,11 @@ export default function Login() {
 
       if (!response.ok) {
         throw new Error(
-          data.detail || "Login failed"
+          data.detail || "Signup failed"
         );
       }
 
-      login(data.user);
-
-      navigate("/dashboard");
+      navigate("/login");
     } catch (err) {
       setError(err.message);
     } finally {
@@ -80,11 +78,11 @@ export default function Login() {
 
         <div className="mb-8">
           <h2 className="text-[#F5F5F5] text-3xl font-bold tracking-tight mb-2">
-            Welcome to FORGE
+            Create Account
           </h2>
 
           <p className="text-[#A1A1AA] text-sm">
-            Sign in to access your workspace.
+            Create your Forge workspace and start building projects.
           </p>
         </div>
 
@@ -95,6 +93,22 @@ export default function Login() {
         )}
 
         <form onSubmit={handleSubmit} className="space-y-5">
+
+          <div>
+            <label className="block text-xs font-semibold tracking-wider text-[#A1A1AA] uppercase mb-2">
+              Full Name
+            </label>
+
+            <input
+              type="text"
+              required
+              minLength={2}
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className="w-full bg-[#111111] border border-[#232323] text-[#F5F5F5] rounded px-4 py-3 text-sm focus:outline-none focus:border-[#D97706] transition-colors"
+              placeholder="Aswanth Madhav"
+            />
+          </div>
 
           <div>
             <label className="block text-xs font-semibold tracking-wider text-[#A1A1AA] uppercase mb-2">
@@ -112,44 +126,36 @@ export default function Login() {
           </div>
 
           <div>
-            <div className="flex justify-between items-center mb-2">
-              <label className="block text-xs font-semibold tracking-wider text-[#A1A1AA] uppercase">
-                Password
-              </label>
-
-              <button
-                type="button"
-                className="text-xs text-[#D97706] hover:underline"
-              >
-                Forgot?
-              </button>
-            </div>
+            <label className="block text-xs font-semibold tracking-wider text-[#A1A1AA] uppercase mb-2">
+              Password
+            </label>
 
             <input
               type="password"
               required
+              minLength={8}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               className="w-full bg-[#111111] border border-[#232323] text-[#F5F5F5] rounded px-4 py-3 text-sm focus:outline-none focus:border-[#D97706] transition-colors"
-              placeholder="••••••••"
+              placeholder="Minimum 8 characters"
             />
           </div>
 
           <button
             type="submit"
             disabled={loading}
-            className="w-full mt-2 bg-[#D97706] text-[#F5F5F5] py-3 rounded hover:bg-[#b46205] transition-colors text-sm font-semibold tracking-wide disabled:opacity-60"
+            className="w-full bg-[#D97706] text-[#F5F5F5] py-3 rounded hover:bg-[#b46205] transition-colors text-sm font-semibold tracking-wide disabled:opacity-60"
           >
-            {loading ? "Signing In..." : "Sign In"}
+            {loading ? "Creating Account..." : "Create Account"}
           </button>
 
           <div className="text-center pt-2">
             <button
               type="button"
-              onClick={() => navigate("/signup")}
+              onClick={() => navigate("/login")}
               className="text-sm text-[#D97706] hover:underline"
             >
-              Don't have an account? Create one
+              Already have an account? Sign In
             </button>
           </div>
 
