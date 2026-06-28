@@ -12,6 +12,7 @@ import TaskManagementPage from "../features/tasks/pages/TaskManagementPage";
 import TeamAnalysisPage from "../features/team-analysis/pages/TeamAnalysisPage";
 import AIReportsPage from "../features/ai-reports/pages/AIReportsPage";
 import CreateProjectPage from "../features/projects/pages/CreateProjectPage";
+import ProjectDetailsPage from "../features/projects/pages/ProjectDetailsPage";
 import IdeaValidationPage from "../features/validation/pages/IdeaValidationPage";
 
 function RouteManager() {
@@ -62,6 +63,16 @@ function RouteManager() {
             </DashboardLayout>
           </RequireAuth>
         } />
+        <Route
+  path="/projects/:projectId"
+  element={
+    <RequireAuth>
+      <DashboardLayout>
+        <ProjectDetailsPage />
+      </DashboardLayout>
+    </RequireAuth>
+  }
+/>
 
         <Route path="/projects" element={
           <RequireAuth>
